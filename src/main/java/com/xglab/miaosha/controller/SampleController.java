@@ -5,11 +5,14 @@ import com.xglab.miaosha.redis.RedisService;
 import com.xglab.miaosha.redis.UserKey;
 import com.xglab.miaosha.result.Result;
 import com.xglab.miaosha.service.UserService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.logging.Logger;
 
 /*
  * @author: LiuGuohu
@@ -20,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/demo")
 public class SampleController {
+
+
 
     @Autowired
     UserService userService;
@@ -46,4 +51,5 @@ public class SampleController {
         String str = redisService.get(UserKey.getById, "1", String.class);
         return Result.success(str);
     }
+
 }
