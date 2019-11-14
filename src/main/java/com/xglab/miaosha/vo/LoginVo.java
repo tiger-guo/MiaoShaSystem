@@ -1,5 +1,9 @@
 package com.xglab.miaosha.vo;
 
+import com.xglab.miaosha.validation.IsMobile;
+
+import javax.validation.constraints.NotNull;
+
 /*
  * @author: LiuGuohu
  * @company: XGLAB
@@ -8,7 +12,11 @@ package com.xglab.miaosha.vo;
  */
 public class LoginVo {
 
+    @NotNull
+    @IsMobile
     private String mobile;
+
+    @NotNull
     private String password;
 
     public String getMobile() {

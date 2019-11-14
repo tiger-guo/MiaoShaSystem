@@ -37,6 +37,12 @@ public class SampleController {
         return "hello";
     }
 
+    @RequestMapping("/curl")
+    @ResponseBody
+    public String curlGet(){
+        return "hello curl";
+    }
+
     @RequestMapping("/db/get")
     @ResponseBody
     public User dbGet(){
