@@ -52,10 +52,11 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
     private String getCookieToken(HttpServletRequest request, String cookieNameToken) {
         Cookie[] cookies = request.getCookies();
-
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals(cookieNameToken))
-                return cookie.getValue();
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(cookieNameToken))
+                    return cookie.getValue();
+            }
         }
         return null;
     }
