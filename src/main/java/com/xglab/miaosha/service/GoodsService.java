@@ -32,6 +32,7 @@ public class GoodsService {
     public void reduceStock(GoodsVo goods) {
         Goods good = new Goods();
         good.setGoodsStock(goods.getStockCount() - 1);
+        good.setId(goods.getId());
         goodsDAO.reduceStock(good);
     }
 }

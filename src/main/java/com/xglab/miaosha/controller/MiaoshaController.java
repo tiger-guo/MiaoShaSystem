@@ -39,6 +39,10 @@ public class MiaoshaController {
     @Autowired
     MiaoshaService miaoshaService;
 
+    /**
+     * windons部署 QPS: 17
+     * Linux 部署：QPS: 35
+     */
     @RequestMapping("/do_miaosha")
     public String list(Model model, @RequestParam("goodsId") long goodsId, MiaoshaUser user) {
         model.addAttribute("user", user);

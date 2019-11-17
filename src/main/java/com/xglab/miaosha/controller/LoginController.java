@@ -3,6 +3,7 @@ package com.xglab.miaosha.controller;
 import com.xglab.miaosha.result.Result;
 import com.xglab.miaosha.service.MiaoshaUserService;
 import com.xglab.miaosha.vo.LoginVo;
+import jdk.nashorn.internal.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,10 @@ public class LoginController {
 
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo){
+    public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo){
         log.info(loginVo.toString());
 
-        userService.login(response, loginVo);
-        return Result.success(true);
+        String token = userService.login(response, loginVo);
+        return Result.success(token);
     }
 }
