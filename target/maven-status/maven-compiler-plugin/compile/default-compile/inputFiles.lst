@@ -5,6 +5,7 @@ E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\domain\User.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\util\UUIDUtil.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\domain\Goods.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\controller\GoodsController.java
+E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\util\DBUtil.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\dao\MiaoshaUserDao.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\dao\GoodsDAO.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\dao\UserDAO.java
@@ -12,6 +13,7 @@ E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\validation\IsMobil
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\redis\RedisPoolFactory.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\validation\IsMobile.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\domain\MiaoshaOrder.java
+E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\redis\GoodsKey.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\result\CodeMsg.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\controller\SampleController.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\controller\UserController.java
@@ -27,6 +29,7 @@ E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\MainApplication.ja
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\config\WebConfig.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\redis\KeyPrefix.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\redis\UserKey.java
+E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\util\UserUtil.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\exception\GlobalExceptionHandler.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\result\Result.java
 E:\Code\Project\miaoshaSystem\src\main\java\com\xglab\miaosha\controller\LoginController.java

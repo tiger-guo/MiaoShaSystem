@@ -46,6 +46,11 @@ public class GoodsController {
     @Autowired
     ApplicationContext applicationContext;
 
+    /**
+     * 1000 * 10
+     * windons部署 页面缓存 QPS:63
+     * Linux部署   页面缓存 QPS:48
+     */
     @RequestMapping(value = "/to_list", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String toGoodList(HttpServletRequest request, HttpServletResponse response,

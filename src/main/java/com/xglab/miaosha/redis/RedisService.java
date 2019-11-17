@@ -46,7 +46,6 @@ public class RedisService {
             jedis = jedisPool.getResource();
             String str = beanToString(value);
             String realKey = prefix.getPrefix() + key;
-            System.out.println(realKey);
             int seconds = prefix.expireSeconds();
             if (seconds <= 0) {
                 jedis.set(realKey, str);
@@ -54,6 +53,21 @@ public class RedisService {
                 jedis.setex(realKey, seconds, str);
             }
             return true;
+        } finally {
+            returnToPool(jedis);
+        }
+    }
+
+    /**
+     * 删除缓存
+     */
+    public <T> boolean delete(KeyPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            String realKey = prefix.getPrefix() + key;
+            long ret = jedis.del(realKey);
+            return ret>0;
         } finally {
             returnToPool(jedis);
         }
@@ -136,4 +150,6 @@ public class RedisService {
         if (jedis != null)
             jedis.close();
     }
+
+
 }

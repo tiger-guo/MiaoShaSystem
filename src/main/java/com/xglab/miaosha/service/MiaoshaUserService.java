@@ -3,6 +3,7 @@ package com.xglab.miaosha.service;
 import com.xglab.miaosha.dao.MiaoshaUserDao;
 import com.xglab.miaosha.domain.MiaoshaUser;
 import com.xglab.miaosha.exception.GlobalException;
+import com.xglab.miaosha.redis.BasePrefix;
 import com.xglab.miaosha.redis.MiaoshaUserKey;
 import com.xglab.miaosha.redis.RedisService;
 import com.xglab.miaosha.result.CodeMsg;
@@ -34,8 +35,36 @@ public class MiaoshaUserService {
     RedisService redisService;
 
     public MiaoshaUser getById(Long id) {
-        return miaoshaUserDao.getById(id);
+        MiaoshaUser user = redisService.get(MiaoshaUserKey.getById, "" + id, MiaoshaUser.class);
+        if (user != null) {
+            return user;
+        }
+
+        user = miaoshaUserDao.getById(id);
+        if (user != null) {
+            redisService.set(MiaoshaUserKey.getById, "" + id, MiaoshaUser.class);
+        }
+        return user;
     }
+
+    public boolean updatePassword(String token, long id, String passwordNew){
+        MiaoshaUser user = getById(id);
+        if(user == null){
+            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+        }
+
+        // 更新数据库
+        MiaoshaUser toBeUpdate= new MiaoshaUser();
+        toBeUpdate.setId(id);
+        toBeUpdate.setPassword(MD5Util.formPassToDBPass(passwordNew, user.getSalt()));
+        miaoshaUserDao.update(toBeUpdate);
+        // 处理缓存
+        user.setPassword(passwordNew);
+        redisService.delete(MiaoshaUserKey.getById, ""+id);
+        redisService.set(MiaoshaUserKey.token, token, user);
+        return true;
+    }
+
 
     public String login(HttpServletResponse response, LoginVo loginVo) {
         if (loginVo == null) {
@@ -73,6 +102,7 @@ public class MiaoshaUserService {
 
     /**
      * cookie设置
+     *
      * @param response
      * @param user
      */

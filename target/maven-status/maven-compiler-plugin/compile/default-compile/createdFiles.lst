@@ -19,6 +19,7 @@ com\xglab\miaosha\controller\MiaoshaController.class
 com\xglab\miaosha\exception\GlobalExceptionHandler.class
 com\xglab\miaosha\validation\IsMobile.class
 com\xglab\miaosha\service\UserService.class
+com\xglab\miaosha\util\UserUtil.class
 com\xglab\miaosha\redis\OrderKey.class
 com\xglab\miaosha\redis\RedisConfig.class
 com\xglab\miaosha\domain\Goods.class
@@ -26,6 +27,7 @@ com\xglab\miaosha\redis\MiaoshaUserKey.class
 com\xglab\miaosha\validation\IsMobileValidator.class
 com\xglab\miaosha\redis\RedisPoolFactory.class
 com\xglab\miaosha\redis\BasePrefix.class
+com\xglab\miaosha\redis\GoodsKey.class
 com\xglab\miaosha\util\ValidatorUtil.class
 com\xglab\miaosha\util\MD5Util.class
 com\xglab\miaosha\controller\UserController.class
@@ -39,5 +41,6 @@ com\xglab\miaosha\vo\LoginVo.class
 com\xglab\miaosha\MainApplication.class
 com\xglab\miaosha\dao\UserDAO.class
 com\xglab\miaosha\controller\SampleController.class
+com\xglab\miaosha\util\DBUtil.class
 com\xglab\miaosha\exception\GlobalException.class
 com\xglab\miaosha\vo\GoodsVo.class
