@@ -1,6 +1,7 @@
 package com.xglab.miaosha.controller;
 
 import com.xglab.miaosha.domain.User;
+import com.xglab.miaosha.rabbitmq.MQSender;
 import com.xglab.miaosha.redis.RedisService;
 import com.xglab.miaosha.redis.UserKey;
 import com.xglab.miaosha.result.Result;
@@ -31,6 +32,37 @@ public class SampleController {
     @Autowired
     RedisService redisService;
 
+    @Autowired
+    MQSender sender;
+
+    @RequestMapping("/mq")
+    @ResponseBody
+    public Result<String> mq(Model model) {
+        sender.send("hello, mq");
+        return Result.success("hello, mq");
+    }
+
+    @RequestMapping("/mq/topic")
+    @ResponseBody
+    public Result<String> mqTopic(Model model) {
+        sender.sendTopic("hello, Topicmq");
+        return Result.success("hello, Topicmq");
+    }
+
+    @RequestMapping("/mq/fanout")
+    @ResponseBody
+    public Result<String> mqFanout(Model model) {
+        sender.sendFanout("hello, Fanoutmq");
+        return Result.success("hello, Fanoutmq");
+    }
+
+    @RequestMapping("/mq/header")
+    @ResponseBody
+    public Result<String> mqHeader(Model model) {
+        sender.sendHeader("hello, Headermq");
+        return Result.success("hello, Headermq");
+    }
+
     @RequestMapping("/thymeleaf")
     public String thymeleaf(Model model) {
         model.addAttribute("name", "joshua");
@@ -49,6 +81,7 @@ public class SampleController {
         System.out.println(userService.tx());
         return userService.getById(2);
     }
+
 
     @RequestMapping("/redis/get")
     @ResponseBody

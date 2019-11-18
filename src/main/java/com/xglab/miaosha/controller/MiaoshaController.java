@@ -44,8 +44,6 @@ public class MiaoshaController {
      * windons部署 QPS: 17
      * Linux 部署：QPS: 35
      *假如页面缓存 对象缓存 页面静态化之后
-     * windons部署 QPS:
-     * Linux 部署：QPS: 35
      */
     @RequestMapping(value = "/do_miaosha", method = RequestMethod.POST)
     @ResponseBody
