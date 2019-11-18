@@ -1,8 +1,10 @@
 package com.xglab.miaosha.config;
 
+import com.xglab.miaosha.access.AccessInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -21,6 +23,9 @@ public class WebConfig extends WebMvcConfigurationSupport{
     @Autowired
     UserArgumentResolver userArgumentResolver;
 
+    @Autowired
+    AccessInterceptor accessInterceptor;
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(userArgumentResolver);
@@ -33,5 +38,10 @@ public class WebConfig extends WebMvcConfigurationSupport{
                 .addResourceLocations("classpath:/static/")
                 .addResourceLocations("classpath:/public/");
         super.addResourceHandlers(registry);
+    }
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(accessInterceptor);
     }
 }

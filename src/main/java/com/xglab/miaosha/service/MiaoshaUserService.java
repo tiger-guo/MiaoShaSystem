@@ -47,20 +47,20 @@ public class MiaoshaUserService {
         return user;
     }
 
-    public boolean updatePassword(String token, long id, String passwordNew){
+    public boolean updatePassword(String token, long id, String passwordNew) {
         MiaoshaUser user = getById(id);
-        if(user == null){
+        if (user == null) {
             throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
         }
 
         // 更新数据库
-        MiaoshaUser toBeUpdate= new MiaoshaUser();
+        MiaoshaUser toBeUpdate = new MiaoshaUser();
         toBeUpdate.setId(id);
         toBeUpdate.setPassword(MD5Util.formPassToDBPass(passwordNew, user.getSalt()));
         miaoshaUserDao.update(toBeUpdate);
         // 处理缓存
         user.setPassword(passwordNew);
-        redisService.delete(MiaoshaUserKey.getById);
+        redisService.delete(MiaoshaUserKey.getById, "" + id);
         redisService.set(MiaoshaUserKey.token, token, user);
         return true;
     }
