@@ -8,8 +8,10 @@ com\xglab\miaosha\config\WebConfig.class
 com\xglab\miaosha\domain\MiaoshaOrder.class
 com\xglab\miaosha\util\UUIDUtil.class
 com\xglab\miaosha\domain\MiaoshaGoods.class
+com\xglab\miaosha\rabbitmq\MQSender.class
 com\xglab\miaosha\service\GoodsService.class
 com\xglab\miaosha\service\MiaoshaUserService.class
+com\xglab\miaosha\controller\OrderController.class
 com\xglab\miaosha\domain\MiaoshaUser.class
 com\xglab\miaosha\result\CodeMsg.class
 com\xglab\miaosha\service\MiaoshaService.class
@@ -25,6 +27,7 @@ com\xglab\miaosha\redis\RedisConfig.class
 com\xglab\miaosha\domain\Goods.class
 com\xglab\miaosha\redis\MiaoshaUserKey.class
 com\xglab\miaosha\validation\IsMobileValidator.class
+com\xglab\miaosha\redis\MiaoshaKey.class
 com\xglab\miaosha\redis\RedisPoolFactory.class
 com\xglab\miaosha\redis\BasePrefix.class
 com\xglab\miaosha\redis\GoodsKey.class
@@ -34,13 +37,18 @@ com\xglab\miaosha\controller\UserController.class
 com\xglab\miaosha\domain\User.class
 com\xglab\miaosha\result\Result.class
 com\xglab\miaosha\redis\UserKey.class
+com\xglab\miaosha\rabbitmq\MQReceiver.class
+com\xglab\miaosha\vo\GoodsDetailVo.class
 com\xglab\miaosha\config\UserArgumentResolver.class
 com\xglab\miaosha\service\OrderService.class
 com\xglab\miaosha\controller\GoodsController.class
 com\xglab\miaosha\vo\LoginVo.class
 com\xglab\miaosha\MainApplication.class
 com\xglab\miaosha\dao\UserDAO.class
+com\xglab\miaosha\rabbitmq\MiaoshaMessage.class
 com\xglab\miaosha\controller\SampleController.class
+com\xglab\miaosha\rabbitmq\MQConfig.class
 com\xglab\miaosha\util\DBUtil.class
 com\xglab\miaosha\exception\GlobalException.class
+com\xglab\miaosha\vo\OrderDetailVo.class
 com\xglab\miaosha\vo\GoodsVo.class

@@ -21,7 +21,7 @@ public class UserUtil {
 		//生成用户
 		for(int i=0;i<count;i++) {
 			MiaoshaUser user = new MiaoshaUser();
-			user.setId(13000000000L+i);
+			user.setId(12000000000L+i);
 			user.setLoginCount(1);
 			user.setNickname("user"+i);
 			user.setRegisterDate(new Date());
@@ -30,24 +30,24 @@ public class UserUtil {
 			users.add(user);
 		}
 		System.out.println("create user");
-		//插入数据库
-		Connection conn = DBUtil.getConn();
-		String sql = "insert into miaosha_user(id,nickname,password,salt,register_date,login_count) values(?,?,?,?,?,?)";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		for(int i=0;i<users.size();i++) {
-			MiaoshaUser user = users.get(i);
-			pstmt.setInt(6, user.getLoginCount());
-			pstmt.setString(2, user.getNickname());
-			pstmt.setTimestamp(5, new Timestamp(user.getRegisterDate().getTime()));
-			pstmt.setString(4, user.getSalt());
-			pstmt.setString(3, user.getPassword());
-			pstmt.setLong(1, user.getId());
-			pstmt.addBatch();
-		}
-		pstmt.executeBatch();
-		pstmt.close();
-		conn.close();
-		System.out.println("insert to db");
+//		//插入数据库
+//		Connection conn = DBUtil.getConn();
+//		String sql = "insert into miaosha_user(id,nickname,password,salt,register_date,login_count) values(?,?,?,?,?,?)";
+//		PreparedStatement pstmt = conn.prepareStatement(sql);
+//		for(int i=0;i<users.size();i++) {
+//			MiaoshaUser user = users.get(i);
+//			pstmt.setInt(6, user.getLoginCount());
+//			pstmt.setString(2, user.getNickname());
+//			pstmt.setTimestamp(5, new Timestamp(user.getRegisterDate().getTime()));
+//			pstmt.setString(4, user.getSalt());
+//			pstmt.setString(3, user.getPassword());
+//			pstmt.setLong(1, user.getId());
+//			pstmt.addBatch();
+//		}
+//		pstmt.executeBatch();
+//		pstmt.close();
+//		conn.close();
+//		System.out.println("insert to db");
 		//登录，生成token
 		String urlString = "http://localhost:8080/login/do_login";
 		File file = new File("F:/tokens.txt");
@@ -93,6 +93,6 @@ public class UserUtil {
 	}
 	
 	public static void main(String[] args)throws Exception {
-		createUser(5000);
+		createUser(2000);
 	}
 }

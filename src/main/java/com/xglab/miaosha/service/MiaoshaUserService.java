@@ -60,7 +60,7 @@ public class MiaoshaUserService {
         miaoshaUserDao.update(toBeUpdate);
         // 处理缓存
         user.setPassword(passwordNew);
-        redisService.delete(MiaoshaUserKey.getById, ""+id);
+        redisService.delete(MiaoshaUserKey.getById);
         redisService.set(MiaoshaUserKey.token, token, user);
         return true;
     }
@@ -96,6 +96,7 @@ public class MiaoshaUserService {
         // 延长有效期
         if (user != null)
             setCookie(response, token, user);
+
         return user;
     }
 

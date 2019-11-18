@@ -17,6 +17,7 @@ import java.util.Map;
 @Configuration
 public class MQConfig {
 
+    public static final String DOMIAOSHA_QUEUE = "miaosha.queue";
     public static final String QUEUE = "queue";
     public static final String TOPIC_QUEUE1 = "topic.queue1";
     public static final String TOPIC_QUEUE2 = "topic.queue2";
@@ -24,6 +25,11 @@ public class MQConfig {
     public static final String TOPIC_EXCHANGE = "topic.exchange";
     public static final String FANOUT_EXCHANGE = "fanout.exchange";
     public static final String HEADERS_EXCHANGE = "headers.exchange";
+
+    @Bean
+    public Queue miaoshaQueue(){
+        return new Queue(DOMIAOSHA_QUEUE, true);
+    }
 
 
     /**

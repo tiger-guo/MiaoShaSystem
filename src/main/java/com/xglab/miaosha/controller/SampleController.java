@@ -35,6 +35,7 @@ public class SampleController {
     @Autowired
     MQSender sender;
 
+    /*
     @RequestMapping("/mq")
     @ResponseBody
     public Result<String> mq(Model model) {
@@ -62,6 +63,7 @@ public class SampleController {
         sender.sendHeader("hello, Headermq");
         return Result.success("hello, Headermq");
     }
+     */
 
     @RequestMapping("/thymeleaf")
     public String thymeleaf(Model model) {

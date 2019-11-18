@@ -1,6 +1,7 @@
 package com.xglab.miaosha.dao;
 
 import com.xglab.miaosha.domain.Goods;
+import com.xglab.miaosha.domain.MiaoshaGoods;
 import com.xglab.miaosha.vo.GoodsVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,8 @@ public interface GoodsDAO {
 
     @Update("update miaosha_goods set stock_count = stock_count -1 where goods_id = #{id} and stock_count>0")
     int reduceStock(Goods good);
+
+    @Update("update miaosha_goods set stock_count = #{stockCount} where goods_id = #{goodsId}")
+    public int resetStock(MiaoshaGoods g);
+
 }

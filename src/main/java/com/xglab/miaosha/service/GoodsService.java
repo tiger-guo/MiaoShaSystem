@@ -2,6 +2,7 @@ package com.xglab.miaosha.service;
 
 import com.xglab.miaosha.dao.GoodsDAO;
 import com.xglab.miaosha.domain.Goods;
+import com.xglab.miaosha.domain.MiaoshaGoods;
 import com.xglab.miaosha.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,10 +30,22 @@ public class GoodsService {
         return goodsDAO.getGoodsVoByGoodsId(goodsId);
     }
 
-    public void reduceStock(GoodsVo goods) {
+
+    public boolean reduceStock(GoodsVo goods) {
         Goods good = new Goods();
         good.setGoodsStock(goods.getStockCount() - 1);
         good.setId(goods.getId());
-        goodsDAO.reduceStock(good);
+        int ret = goodsDAO.reduceStock(good);
+        return ret > 0;
     }
+
+    public void resetStock(List<GoodsVo> goodsList) {
+        for(GoodsVo goods : goodsList ) {
+            MiaoshaGoods g = new MiaoshaGoods();
+            g.setGoodsId(goods.getId());
+            g.setStockCount(goods.getStockCount());
+            goodsDAO.resetStock(g);
+        }
+    }
+
 }
